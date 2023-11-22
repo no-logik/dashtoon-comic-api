@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import Form from "./form";
+import Header from "./header";
+import PanelProvider from "./context/panelContext";
+
+import "./App.css";
 
 const App = () => {
-  const [text, setText] = useState("");
-
-  const addText = (e) => {
-    setText(e.target.value);
-  };
-
   return (
-    <form>
-      <input type="text" onChange={addText} />
-      <button type="submit">Submit</button>
-    </form>
+    <PanelProvider>
+      <div className="container">
+        <Header />
+        <Form />
+      </div>
+    </PanelProvider>
   );
 };
 

@@ -1,0 +1,32 @@
+.form-box, .storyline-box {
+  height: 30vw; 
+  width: 30vw;
+  border: 0px #000 dashed;
+  margin-right: 20px;
+  box-shadow: 1px 1px 3px #d0d0d0, -1px -1px 3px #d0d0d0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.storyline-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons{
+  margin-left: 35px;
+}
+
+.body{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.renderedImg{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
