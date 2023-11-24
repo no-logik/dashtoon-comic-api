@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import query from "./api/strip";
-import Storyline from "./storyline";
 import { UsePanelContext } from "./context/panelContext";
 import "./styles.css";
 
@@ -8,9 +7,13 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
+// import DownloadIcon from "@mui/icons-material/Download";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
+
+// import * as domToImage from "dom-to-image";
+// import * as FileSaver from "file-saver";
 
 const Form = () => {
   const { imagesArr, updatePanels } = UsePanelContext();
@@ -24,6 +27,25 @@ const Form = () => {
   };
 
   const data = { inputs: text };
+
+  // const downloadStrip = (e) => {
+  //   e.preventDefault();
+  //   var node = document.querySelector(".form-box");
+
+  //   domToImage
+  //     .toBlob(node)
+  //     .then((blob) => {
+  //       console.log(blob);
+  //       if (window.saveAs) {
+  //         window.saveAs(blob, "comic-strip.png");
+  //       } else {
+  //         FileSaver.saveAs(blob, "comoic-strip.png");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const callAPI = async (e) => {
     e.preventDefault();
@@ -43,16 +65,6 @@ const Form = () => {
     }
   };
 
-  //////////////////ADD FEATURE OF SELECTING WHAT KEYWORDS TO SEND//////////////////////////////
-
-  // const list = [
-  //   { key: 0, label: "Angular" },
-  //   { key: 1, label: "jQuery" },
-  //   { key: 2, label: "Polymer" },
-  //   { key: 3, label: "React" },
-  //   { key: 4, label: "Vue.js" },
-  // ];
-
   const addPanel = () => {
     const lastSrc = imagesArr.length ? imagesArr[imagesArr.length - 1].label : "";
     // console.log(lastSrc);
@@ -62,27 +74,29 @@ const Form = () => {
     }
   };
 
-  console.log(imagesArr);
+  // console.log(imagesArr);
 
   return (
     <div className="body">
       <div className="form-box">
         <Box
+          className="form-textbox"
           component="form"
           sx={{
-            "& > :not(style)": { m: 4, width: "80%" },
+            "& > :not(style)": { m: 2, width: "100%" },
           }}
           noValidate
           autoComplete="off"
         >
           <TextField
+            className="textbox"
             id="outlined-basic"
             label="Panel Description"
             variant="outlined"
             onChange={addText}
           />
         </Box>
-        <Stack className="buttons" direction="row" spacing={2}>
+        <Stack className="buttons" direction="column" spacing={2}>
           <Button variant="contained" endIcon={<SendIcon />} onClick={callAPI}>
             SEND
           </Button>
@@ -90,6 +104,7 @@ const Form = () => {
             ADD PANEL
           </Button>
         </Stack>
+
         <br />
       </div>
       <div className="storyline-box">
@@ -101,7 +116,7 @@ const Form = () => {
           <img
             className="renderedImg "
             src={imgSrc}
-            alt="view-your-rendered-image-here"
+            alt="view-your-rendered-panel-here"
             width="100%"
             height="100%"
           />
@@ -113,13 +128,10 @@ const Form = () => {
 
 export default Form;
 
-// <form>
-//         <input type="text" onChange={addText} />
-//         <br />
-//         <button type="button" onClick={updateList}>
-//           Add
-//         </button>
-//         <button type="submit" onClick={callAPI}>
-//           Submit
-//         </button>
-//       </form>
+// <Button
+//             variant="contained"
+//             startIcon={<DownloadIcon />}
+//             onClick={downloadStrip}
+//           >
+//             Download Strip
+//           </Button>

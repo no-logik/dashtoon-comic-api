@@ -14,8 +14,25 @@
   align-items: center;
 }
 
+.form-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-textbox{
+  width: 90%;
+  padding: 10px;
+  margin-left: 0;
+}
+
+.textbox{
+  margin-left: 0 !important;
+}
+
 .buttons{
-  margin-left: 35px;
+  /* margin-left: 15px; */
+  width: 70%;
 }
 
 .body{
@@ -29,4 +46,33 @@
   display: flex;
   justify-content:center;
   align-items: center;
+}
+
+.comic-container{
+  /* min-width: 100%; */
+  max-width: fit-content;
+  /* width: fit-content; */
+  margin: 10vh auto;
+  padding: 20px;
+  background-image: url("./static/dotted_black_background.jpg");
+  background-color: #d2d2d2;
+  /* background-size: 800px 600px; */
+  background-size: cover;
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.panel-container{
+  display: inline-flex;
+  height: 220px;
+  width: 220px;
+  margin: 10px;
+  border: 5px #fff solid;
+}
+
+.panel-container img{
+  object-fit: cover;
+  object-position: center;
 }
