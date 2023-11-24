@@ -6,6 +6,8 @@
   margin: 0;
   padding: 0;
   font-family: 'Comic Neue', cursive;
+  
+  /* z-index: -10; */
 }
 
 body {
@@ -15,6 +17,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./34366.jpg); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #fff;
   /* background-color: #98d0f9; */
 }
 

@@ -20,7 +20,7 @@ const Comic = () => {
           return <Panel key={img.id} source={img} />;
         })
       ) : (
-        <h2>{"View you comic strip here"}</h2>
+        <h2>{"View your comic strip here"}</h2>
       )}
     </div>
   );

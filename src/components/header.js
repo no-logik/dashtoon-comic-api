@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <div className="nav">
-      <img src={logo} alt="Dashtoon" width="100px" height="100px" />
+      <img className="logo-icon" src={logo} alt="Dashtoon" width="100px" height="100px" />
       <div className="info">
         <Button aria-describedby={id} variant="contained" onClick={handleClick}>
           <InfoIcon />
