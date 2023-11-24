@@ -1,8 +1,15 @@
+.nav{
+  width: 100vw;
+}
+
 .form-box, .storyline-box {
   height: 30vw; 
   width: 30vw;
+  min-width: 350px;
+  min-height: 350px;
   border: 0px #000 dashed;
-  margin-right: 20px;
+  margin: 20px;
+  /* margin-bottom: 20px; */
   box-shadow: 1px 1px 3px #d0d0d0, -1px -1px 3px #d0d0d0;
   padding: 20px;
   border-radius: 10px;
@@ -31,7 +38,6 @@
 }
 
 .buttons{
-  /* margin-left: 15px; */
   width: 70%;
 }
 
@@ -49,19 +55,18 @@
 }
 
 .comic-container{
-  /* min-width: 100%; */
+  min-width: min-content;
   max-width: fit-content;
-  /* width: fit-content; */
-  margin: 10vh auto;
+  margin: 50px;
+  height: auto;
   padding: 20px;
-  background-image: url("./static/dotted_black_background.jpg");
-  background-color: #d2d2d2;
-  /* background-size: 800px 600px; */
-  background-size: cover;
+  background-image: url("./dotted_black_background.jpg");
+  background-size: contain;
   background-repeat: repeat;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .panel-container{
@@ -75,4 +80,14 @@
 .panel-container img{
   object-fit: cover;
   object-position: center;
+}
+
+@media  screen and (max-width:700px) {
+  .body{
+    flex-direction: column;
+  }
+  .nav img{
+    width: 70px;
+    height: 70px;
+  }
 }

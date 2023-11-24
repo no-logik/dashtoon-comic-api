@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 
-//create context to store panel image sources
 const PanelContext = React.createContext();
 
 export const UsePanelContext = () => {
@@ -9,7 +8,6 @@ export const UsePanelContext = () => {
 
 const PanelProvider = ({ children }) => {
   const [imagesArr, setImagesArr] = useState([]);
-  // const [stripRef, setStripRef] = useState(useRef < HTMLDivElement > null);
 
   const updatePanels = (src, idx) => {
     const entryTemp = { key: idx, label: src };

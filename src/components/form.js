@@ -1,19 +1,20 @@
-import { useState, useRef } from "react";
-import query from "./api/strip";
-import { UsePanelContext } from "./context/panelContext";
-import "./styles.css";
+import { useState } from "react";
+import query from "../api/strip";
+import { UsePanelContext } from "../context/panelContext";
+import "../static/styles.css";
 
+import JSZip from "jszip";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
-// import DownloadIcon from "@mui/icons-material/Download";
+import DownloadIcon from "@mui/icons-material/Download";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 
-// import * as domToImage from "dom-to-image";
-// import * as FileSaver from "file-saver";
+import * as domToImage from "dom-to-image";
+import * as FileSaver from "file-saver";
 
 const Form = () => {
   const { imagesArr, updatePanels } = UsePanelContext();
@@ -28,24 +29,30 @@ const Form = () => {
 
   const data = { inputs: text };
 
-  // const downloadStrip = (e) => {
-  //   e.preventDefault();
-  //   var node = document.querySelector(".form-box");
+  const zip = new JSZip();
 
-  //   domToImage
-  //     .toBlob(node)
-  //     .then((blob) => {
-  //       console.log(blob);
-  //       if (window.saveAs) {
-  //         window.saveAs(blob, "comic-strip.png");
-  //       } else {
-  //         FileSaver.saveAs(blob, "comoic-strip.png");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  const downloadStrip = async (e) => {
+    e.preventDefault();
+
+    for (var i = 0; i < imagesArr.length; i++) {
+      const response = await fetch(imagesArr[i].label);
+      const blob = await response.blob();
+      console.log(blob);
+      zip.file(imagesArr[i].label.split("/").pop(), blob);
+
+      if (i == imagesArr.length - 1) {
+        const zipData = await zip.generateAsync({
+          type: "blob",
+          streamFiles: true,
+        });
+        console.log(zipData);
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(zipData);
+        link.download = "snapcial-ai.zip";
+        link.click();
+      }
+    }
+  };
 
   const callAPI = async (e) => {
     e.preventDefault();
@@ -65,16 +72,14 @@ const Form = () => {
     }
   };
 
-  const addPanel = () => {
+  const addPanel = (e) => {
+    e.preventDefault();
     const lastSrc = imagesArr.length ? imagesArr[imagesArr.length - 1].label : "";
-    // console.log(lastSrc);
+
     if (imgSrc && imgSrc !== lastSrc) {
-      // console.log(text);
       updatePanels(imgSrc, imagesArr.length);
     }
   };
-
-  // console.log(imagesArr);
 
   return (
     <div className="body">
@@ -92,6 +97,7 @@ const Form = () => {
             className="textbox"
             id="outlined-basic"
             label="Panel Description"
+            placeholder="comic-panel, boy, girl, text bubble, dialogue of boy says - i like to play piano"
             variant="outlined"
             onChange={addText}
           />
@@ -102,6 +108,13 @@ const Form = () => {
           </Button>
           <Button variant="outlined" startIcon={<AddIcon />} onClick={addPanel}>
             ADD PANEL
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={downloadStrip}
+          >
+            {"Download Strip [zip]"}
           </Button>
         </Stack>
 
@@ -127,11 +140,3 @@ const Form = () => {
 };
 
 export default Form;
-
-// <Button
-//             variant="contained"
-//             startIcon={<DownloadIcon />}
-//             onClick={downloadStrip}
-//           >
-//             Download Strip
-//           </Button>

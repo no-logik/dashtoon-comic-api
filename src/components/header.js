@@ -1,5 +1,5 @@
-import "./styles.css";
-import logo from "./static/dashtoon_logo.png";
+import "../static/styles.css";
+import logo from "../static/dashtoon_logo.png";
 
 const Header = () => {
   return (
