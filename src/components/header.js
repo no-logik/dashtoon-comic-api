@@ -42,7 +42,7 @@ const Header = () => {
           <Typography sx={{ p: 2 }}>
             Welocme!! Create Comic Panels with this tool. 1. Describe the panel as
             detailed as possible. 2. Press "Send" 3. Give it some time! AI is still a
-            toddler after all😗. 4. If you like it Click on "Add Panel" to add the panel
+            toddler after all😗. 4. If you like it, Click on "Add Panel" to add the panel
             to the strip{" "}
           </Typography>
         </Popover>
