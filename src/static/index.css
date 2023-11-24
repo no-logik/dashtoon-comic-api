@@ -19,7 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url(./34366.jpg); 
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-color: #fff;
   /* background-color: #98d0f9; */
 }
