@@ -17,6 +17,7 @@ async function query(data) {
     const imageURL = URL.createObjectURL(result);
     return imageURL;
   } catch (error) {
+    alert("Error in fetching image: ", error);
     console.log("Error in fetching image: ", error);
     return "error";
   }

@@ -65,9 +65,11 @@ const Form = () => {
         setImgSrc(imageSource);
         setIsLoading(false);
       } else {
+        alert("check conosle for api error");
         console.log("error in API");
       }
     } catch (error) {
+      alert("check conosle for image error");
       console.log("image not loaded: ", error);
     }
   };
