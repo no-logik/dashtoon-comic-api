@@ -4,7 +4,7 @@ This is my submission for the Dashtoon Product Engineer role [Comic Creater Web 
 
 ## Live Demo
 
-Users can describe their comic panel in a detailed manner. The Gen AI supporting this app creates an image for the comic panel.
+Users can describe their comic panel in a detailed manner. The text-to-image Gen AI supporting this app creates an image for the comic panel.
 
 1. Describe your panel image. Provide dialogous, character descriptions, actions etc.
 2. Hit "Send". Wait for the image to render on the side-board.
